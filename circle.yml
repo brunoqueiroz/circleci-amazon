@@ -50,6 +50,6 @@ deployment:
         revision_location:
           revision_type: S3
           s3_location:
-            bucket: my-bucket
+            bucket: circleci-amazon
             key_pattern: circleci-amazon-{BRANCH}-{SHORT_COMMIT}
-        deployment_group: my-deployment-group
+        deployment_group: deploygroup
