@@ -28,13 +28,28 @@ test:
     #- docker push redspark/modelo-front:$CIRCLE_BRANCH-1.0.$CIRCLE_BUILD_NUM
     - tar zcf $CIRCLE_ARTIFACTS/modelo-front.tar dist;
     - cp coverage/test-results.xml $CIRCLE_TEST_REPORTS/test-results.xml
+
+#deployment:
+#  production: # just a label; label names are completely up to you
+#    branch: master
+#   commands:
+#      - pwd
+#      - ./deploy-to-production.sh
+#  qa:
+#    branch: qa
+#    commands:
+#      - ./qa.sh
+
 deployment:
-  production: # just a label; label names are completely up to you
+  staging:
     branch: master
-    commands:
-      - pwd
-      - ./deploy-to-production.sh
-  qa:
-    branch: qa
-    commands:
-      - ./qa.sh
+    codedeploy:
+      circleci-amazon:
+        application_root: /tmp
+        region: sa-east-1
+        revision_location:
+          revision_type: S3
+          s3_location:
+            bucket: my-bucket
+            key_pattern: circleci-amazon-{BRANCH}-{SHORT_COMMIT}
+        deployment_group: my-deployment-group
