@@ -29,27 +29,27 @@ test:
     - tar zcf $CIRCLE_ARTIFACTS/modelo-front.tar dist;
     - cp coverage/test-results.xml $CIRCLE_TEST_REPORTS/test-results.xml
 
-#deployment:
-#  production: # just a label; label names are completely up to you
-#    branch: master
-#   commands:
-#      - pwd
-#      - ./deploy-to-production.sh
-#  qa:
-#    branch: qa
-#    commands:
-#      - ./qa.sh
-
 deployment:
-  staging:
+  production: # just a label; label names are completely up to you
     branch: master
-    codedeploy:
-      circleci-amazon:
-        application_root: /
-        region: sa-east-1
-        revision_location:
-          revision_type: S3
-          s3_location:
-            bucket: circleci-amazon
-            key_pattern: circleci-amazon-{BRANCH}-{SHORT_COMMIT}
-        deployment_group: deploygroup
+    commands:
+      - pwd
+      - ./deploy-to-production.sh
+  qa:
+    branch: qa
+    commands:
+      - ./qa.sh
+
+#deployment:
+#  staging:
+#    branch: master
+#    codedeploy:
+#      circleci-amazon:
+#        application_root: /
+#        region: sa-east-1
+#        revision_location:
+#          revision_type: S3
+#          s3_location:
+#            bucket: circleci-amazon
+#            key_pattern: circleci-amazon-{BRANCH}-{SHORT_COMMIT}
+#        deployment_group: deploygroup
