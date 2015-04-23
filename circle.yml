@@ -39,7 +39,7 @@ deployment:
       - scp -i brunosp.pem $CIRCLE_ARTIFACTS/modelo-front.tar ec2-user@54.94.190.234:/tmp/
       - scp -i brunosp.pem server.sh ec2-user@54.94.190.234:/tmp/ #nao consigo rodar esse comando na amazon por ssh
       #tive que dar permissao na /usr/share/nginx/html para 777, resolver problema de executar .sh com usuario ec2-user.
-      - ssh -i brunosp.pem ec2-user@54.94.190.234 'cd /tmp; tar -zxvf modelo-front.tar; rm -Rf /usr/share/nginx/html/**/*; mv -f dist/* /usr/share/nginx/html; rm -RF modelo-front.tar; rm -Rf modelo-front.tar; rm -Rf dist'
+      - ssh -t -i brunosp.pem ec2-user@54.94.190.234 'cd /tmp; sudo chmod 777 server.sh; ./server.sh'
       #- scp -i brunosp.pem server.sh ec2-user@54.94.190.234:/tmp/
   qa:
     branch: qa
