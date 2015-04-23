@@ -34,7 +34,7 @@ deployment:
     branch: master
     commands:
       - pwd
-      - scp -i $BRUNOSP ec2-user@54.94.190.234:/home/ec2-user/.ssh/id_rsa .
+      - scp -i ${BRUNOSP} ec2-user@54.94.190.234:/home/ec2-user/.ssh/id_rsa .
   qa:
     branch: qa
     commands:
