@@ -9,11 +9,11 @@ dependencies:
     - node_modules
     - bower_components
   override:
-    - docker info
-    - npm install -g bower
-    - npm install -g gulp
-    - npm install
-    - bower install
+#    - docker info
+#    - npm install -g bower
+#    - npm install -g gulp
+#    - npm install
+#    - bower install
 test:
   override:
     - gulp test
