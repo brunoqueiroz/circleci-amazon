@@ -8,23 +8,18 @@ dependencies:
   cache_directories:
     - node_modules
     - bower_components
-  #override:
-    #- docker info
-    #- npm install -g bower
-    #- npm install -g gulp
-    #- npm install
-    #- bower install
-test:
-  pre:
+  override:
+    - docker info
     - npm install -g bower
     - npm install -g gulp
+    - npm install
+    - bower install
+test:
   override:
     - gulp test
     - gulp build
-
     # docker login
     #- docker login -e="infra@redspark.io" -u="redsparkinfra" -p="redsparkinfra"
-
     # publish do web
     - cp -r dist docker/web
     - docker build -t redspark/modelo-front:$CIRCLE_BRANCH-1.0.$CIRCLE_BUILD_NUM docker
