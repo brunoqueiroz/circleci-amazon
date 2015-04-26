@@ -15,6 +15,9 @@ dependencies:
     #- npm install
     #- bower install
 test:
+  pre:
+    - npm install -g bower
+    - npm install -g gulp
   override:
     - gulp test
     - gulp build
