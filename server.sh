@@ -1,7 +1,7 @@
 #!/bin/bash
 cd /tmp
+rm -Rf dist
 tar -zxvf modelo-front.tar
 rm -Rf /usr/share/nginx/html/*
-mv -v dist/* /usr/share/nginx/html
-rm -Rf dist	
+cp -R dist/* /usr/share/nginx/html
 exit
