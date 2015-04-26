@@ -2,6 +2,6 @@
 cd /tmp
 rm -Rf dist
 tar -zxvf modelo-front.tar
-rm -Rf /usr/share/nginx/html/*
-cp -R dist/* /usr/share/nginx/html
+sudo rm -Rf /usr/share/nginx/html/*
+sudo cp -R dist/* /usr/share/nginx/html
 exit
