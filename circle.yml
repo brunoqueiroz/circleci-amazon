@@ -23,6 +23,7 @@ test:
     # publish do web
     - cp -r dist docker/web
     - docker build -t brunoqueiroz/modelo-front:$CIRCLE_BRANCH-1.0.$CIRCLE_BUILD_NUM docker
+    - docker tag -f brunoqueiroz/modelo-front:$CIRCLE_BRANCH-1.0.$CIRCLE_BUILD_NUM brunoqueiroz/modelo-front:lasted
     - docker push brunoqueiroz/modelo-front:$CIRCLE_BRANCH-1.0.$CIRCLE_BUILD_NUM
     #- tar zcf $CIRCLE_ARTIFACTS/modelo-front.tar dist;
     - cp coverage/test-results.xml $CIRCLE_TEST_REPORTS/test-results.xml
@@ -35,7 +36,7 @@ deployment:
   qa:
     branch: qa
     commands:
-      - ./qa.sh
+      - ./deploy-to-qa.sh
 
 #deployment:
 #  staging:
