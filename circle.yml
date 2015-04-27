@@ -23,7 +23,7 @@ test:
     # publish do web
     - cp -r dist docker/web
     - docker build -t brunoqueiroz/modelo-front:$CIRCLE_BRANCH-1.0.$CIRCLE_BUILD_NUM docker
-    - docker build -t brunoqueiroz/modelo-front:$CIRCLE_BRANCH-1.0.$CIRCLE_BUILD_NUM docker
+    - docker build -t brunoqueiroz/modelo-front:lasted docker
     - docker push brunoqueiroz/modelo-front:$CIRCLE_BRANCH-1.0.$CIRCLE_BUILD_NUM
     - docker push brunoqueiroz/modelo-front:lasted
     #- tar zcf $CIRCLE_ARTIFACTS/modelo-front.tar dist;
