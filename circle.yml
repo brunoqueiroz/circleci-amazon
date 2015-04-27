@@ -37,7 +37,7 @@ deployment:
   qa:
     branch: qa
     commands:
-      - echo "teste"
+      - ./deploy-to-qa.sh      
 
 #deployment:
 #  staging:
