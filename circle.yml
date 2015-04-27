@@ -22,10 +22,10 @@ test:
     - docker login -e=$DOCKER_EMAIL -u=$DOCKER_USER -p=$DOCKER_PASSWORD
     # publish do web
     - cp -r dist docker/web
-    - ID=$(docker build -t brunoqueiroz/modelo-front docker) # This build and tag the image with brunoqueiroz/modelo-front:latest
-    - docker tag $ID brunoqueiroz/modelo-front:$CIRCLE_BRANCH-1.0.$CIRCLE_BUILD_NUM  # Add a new tag
-    - docker tag $ID brunoqueiroz/modelo-front:latest   # You can use this and skip the -t part from build
+    - docker build -t brunoqueiroz/modelo-front:$CIRCLE_BRANCH-1.0.$CIRCLE_BUILD_NUM docker
+    - docker build -t brunoqueiroz/modelo-front:$CIRCLE_BRANCH-1.0.$CIRCLE_BUILD_NUM docker
     - docker push brunoqueiroz/modelo-front:$CIRCLE_BRANCH-1.0.$CIRCLE_BUILD_NUM
+    - docker push brunoqueiroz/modelo-front:lasted
     #- tar zcf $CIRCLE_ARTIFACTS/modelo-front.tar dist;
     - cp coverage/test-results.xml $CIRCLE_TEST_REPORTS/test-results.xml
 
@@ -37,7 +37,7 @@ deployment:
   qa:
     branch: qa
     commands:
-      - echo "testeeee"
+      - echo "teste"
 
 #deployment:
 #  staging:
